@@ -32,6 +32,7 @@ import net.fortuna.ical4j.model.property.Organizer;
 import net.fortuna.ical4j.model.property.ProdId;
 import net.fortuna.ical4j.model.property.Uid;
 import net.fortuna.ical4j.model.property.Version;
+import net.fortuna.ical4j.util.MapTimeZoneCache;
 import net.fortuna.ical4j.util.RandomUidGenerator;
 import net.fortuna.ical4j.util.UidGenerator;
 
@@ -48,6 +49,7 @@ public class SendEmail {
 	String organizermail= "test@test.fr";
 	public void sendASimpleEmail(Poll p )  {
 		// Create a default MimeMessage object.
+		System.setProperty("net.fortuna.ical4j.timezone.cache.impl", MapTimeZoneCache.class.getName());
 
 		List<User> u = this.pollRep.findAllUser4Poll(p.getId());
 		List<String> attendees = new ArrayList<String>();
@@ -63,10 +65,10 @@ public class SendEmail {
 		m.setTo(attendees);
 		m.setCc(Arrays.asList(organizermail));
 		m.setFrom(organizermail);
-		m.setSubject("Réunion c" + p.getTitle() + "[créneau confirmé] ");
-		m.setHtml("La date définitive pour la réunion : \""+ p.getTitle() + "\" a été validée par l\'organisateyr. <BR>" + 
+		m.setSubject("Réunion c" + p.getTitle() + " [créneau confirmé] ");
+		m.setHtml("La date définitive pour la réunion : \""+ p.getTitle() + "\" a été validée par l\'organisateur. <BR>" + 
 				"Un salon a été créé de discussion pour cette réunion est accessible à cette adresse <a [href]=\" " +p.getTlkURL() + "\" target=\"_blank\">" + p.getTlkURL() + "</a>.<BR>\n" + 
-				"Un pad a été créé pour cette réunion <a [href]=\""+ p.getPadURL() + "\" target=\"_blank\">\"+ p.getPadURL() + \"</a>.</span><BR>\n");
+				"Un pad a été créé pour cette réunion <a [href]=\""+ p.getPadURL() + "\" target=\"_blank\">\""+ p.getPadURL() + "\"</a>.</span><BR>\n");
 		
 		mailer.send(m);
 		

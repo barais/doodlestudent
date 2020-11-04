@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Utils {
     private static Random random = new Random();
-    private static String CHARS = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890_-";
+    private static String CHARS = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890";
 
     public static String generateSlug(int length) {
         StringBuilder slug = new StringBuilder(length);

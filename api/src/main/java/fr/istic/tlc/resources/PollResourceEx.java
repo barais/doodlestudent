@@ -110,20 +110,15 @@ public class PollResourceEx {
 	@Transactional
 	public ResponseEntity<Poll> createPoll(@Valid @RequestBody Poll poll) {
 		// On enregistre le poll dans la bdd
-		String padId = generateSlug(6);
-		System.err.println(this.apikey);
+		String padId = generateSlug(15);
 		if (this.usePad) {
-			System.err.println("Pass par use pad");
 			if (client == null) {
 				client = new EPLiteClient(padUrl, apikey);
 			}
 			client.createPad(padId);
 			initPad(poll.getTitle(), poll.getLocation(), poll.getDescription(), client, padId);
 			poll.setPadURL(externalPadUrl + "p/" + padId);
-		} else {
-			System.err.println("Pass pas par use pad");
-
-		}
+		} 
 		pollRepository.persist(poll);
 		return new ResponseEntity<>(poll, HttpStatus.CREATED);
 	}
