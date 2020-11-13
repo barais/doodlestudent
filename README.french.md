@@ -15,7 +15,8 @@ Votre mission est de mettre en production une telle application en permettant
 
 Une démo de l'application est accessible [ici](https://doodle.diverse-team.fr).
 
-Une vidéo de l'application est accessible [ici]().
-
+- Voici une petite [vidéo](https://drive.google.com/file/d/1GQbdgq2CHcddTlcoHqM5Zc8Dw5o_eeLg/preview) de présentation des fonctionnalités de l'application.
+- Voici une petite [vidéo](https://drive.google.com/file/d/1l5UAsU5_q-oshwEW6edZ4UvQjN3-tzwi/preview) de présentation de l'architecture de l'application.
+- Voici une petite [vidéo](https://drive.google.com/file/d/1jxYNfJdtd4r_pDbOthra360ei8Z17tX_/preview) de revue de code de l'application.
 
 Un descriptif du cours, des TPs et des étapes du projet est lui accessible [ici](https://hackmd.diverse-team.fr/s/SJqu5DjSD)
