@@ -17,7 +17,7 @@ export class PollService {
 
 
   public updtatePoll(p: Poll): Observable<Poll> {
-    return this.http.put<Poll>('/api/poll/update', p);
+    return this.http.put<Poll>('/api/poll/update1', p);
   }
 
 
