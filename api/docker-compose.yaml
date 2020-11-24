@@ -12,3 +12,8 @@ services:
       - "9001:9001"
     volumes:
       - ./APIKEY.txt:/opt/etherpad-lite/APIKEY.txt
+  mail:
+    image: bytemark/smtp
+    restart: always
+    ports:
+      - "2525:25"
