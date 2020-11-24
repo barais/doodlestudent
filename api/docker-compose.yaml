@@ -7,6 +7,8 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
   etherpad:
-    image: etherpad/etherpad
+    image: etherpad/etherpad:stable
     ports:
       - "9001:9001"
+    volumes:
+      - ./APIKEY.txt:/opt/etherpad-lite/APIKEY.txt
