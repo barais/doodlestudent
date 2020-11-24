@@ -175,6 +175,7 @@ public class PollResourceEx {
 	}
 
 	private static String getPadId(Poll poll) {
-		return poll.getPadURL().substring(poll.getPadURL().length() - 6);
+		//return poll.getPadURL().substring(poll.getPadURL().length() - 6);
+		return poll.getPadURL().substring(poll.getPadURL().lastIndexOf('/') + 1);
 	}
 }
