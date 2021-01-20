@@ -23,7 +23,7 @@ It produces the `code-with-quarkus-1.0.0-SNAPSHOT-runner.jar` file in the `/targ
 Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/lib` directory.
 If you want to build an _über-jar_, execute the following command:
 ```shell script
-./mvnw package build -Dquarkus.package.type=uber-jar
+./mvnw clean package -Dquarkus.package.type=uber-jar
 ```
 
 The application is now runnable using `java -jar target/code-with-quarkus-1.0.0-SNAPSHOT-runner.jar`.
