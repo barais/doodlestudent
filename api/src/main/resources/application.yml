@@ -8,13 +8,15 @@ doodle:
 quarkus:
   datasource:
     db-kind: mysql
-    username: root
-    password: ""
+    username: tlc
+    password: tlc
     jdbc:
       url: jdbc:mysql://localhost:3306/tlc?useUnicode=true&serverTimezone=Europe/Paris
       driver: com.mysql.cj.jdbc.Driver
   flyway:
     migrate-at-start: true
+    baseline-on-migrate: true
+    locations : classpath:src/main/resources/db/migration
 #    database:
 #      generation: none
 #      globally-quoted-identifiers: true
@@ -25,6 +27,7 @@ quarkus:
     port: 2525
 #    port: 465
 #    ssl: true
+
 #    username: ""
 #    password: ""
     mock: false
