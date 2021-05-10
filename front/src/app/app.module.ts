@@ -33,13 +33,14 @@ import { AnswerPollComponent } from './answer-poll/answer-poll.component';
 import { AdminPollComponent } from './admin-poll/admin-poll.component';
 import { DateagoPipe } from './dateago.pipe'; // the main connector. must go first
 
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { UsernamePipePipe } from './username-pipe.pipe';
 import { Selecteddate4userPipePipe } from './selecteddate4user-pipe.pipe';
 import { ModalPollClosComponent } from './modal-poll-clos/modal-poll-clos.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ShowCommentsComponent } from './show-comments/show-comments.component';
+import { WeatherComponent } from './create-poll-component/weather-component/weather-component.component';
 registerLocaleData(localeFr, 'fr');
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -59,9 +60,12 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     Selecteddate4userPipePipe,
     ModalPollClosComponent,
     TopBarComponent,
-    ShowCommentsComponent
+    ShowCommentsComponent,
+    WeatherComponent,
+    
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

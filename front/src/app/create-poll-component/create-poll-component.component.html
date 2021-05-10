@@ -31,6 +31,14 @@
                         <small class="p-error" *ngIf="(lieu.invalid && submitted )|| (lieu.dirty && lieu.invalid)">Le
                             lieu est requis.</small>
                     </div>
+                    <div class="p-field">
+                        <label for="lieu">Code Postal</label>
+                        <input #lieu="ngModel" id="Code Postal" type="number" required pInputText
+                            [(ngModel)]="zipCode"
+                            [ngClass]="{'p-invalid': (lieu.invalid && submitted) || (lieu.dirty && lieu.invalid)}">
+                        <small class="p-error" *ngIf="(lieu.invalid && submitted )|| (lieu.dirty && lieu.invalid)">Le
+                            code postal est requis.</small>
+                    </div>
                    <div class="p-field">
                         <label for="desc">Description</label>
                         <textarea #desc="ngModel" id="desc"  required pInputTextarea
@@ -75,7 +83,7 @@
           </span>
         </div>
       </div>
-
+            <weather-component [weatherInput]="this.weatherInput" [zipCode]="this.zipCode+''"></weather-component>
             <full-calendar #calendar [options]="options"></full-calendar>
       </ng-template>
             <ng-template pTemplate="footer">
