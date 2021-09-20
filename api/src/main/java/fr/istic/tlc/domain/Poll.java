@@ -1,6 +1,6 @@
 package fr.istic.tlc.domain;
 
-import static fr.istic.tlc.services.Utils.generateSlug;
+import fr.istic.tlc.services.Utils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,9 +30,9 @@ public class Poll {
     private String location;
     private String description;
     private boolean has_meal;
-    private String slug = generateSlug(24);
-    private String slugAdmin = generateSlug(24);
-    private String tlkURL = "https://tlk.io/"+generateSlug(12);
+    private String slug = Utils.getInstance().generateSlug(24);
+    private String slugAdmin = Utils.getInstance().generateSlug(24);
+    private String tlkURL = "https://tlk.io/"+Utils.getInstance().generateSlug(12);
     public boolean clos = false;
     
 

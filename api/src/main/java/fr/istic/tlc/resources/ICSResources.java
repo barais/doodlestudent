@@ -130,7 +130,7 @@ public class ICSResources {
 						// Si intersection ajoute l'ID du choice comme ID selected
 						// https://stackoverflow.com/questions/325933/determine-whether-two-date-ranges-overlap
 						for (Choice choice : choices) {
-							if (Utils.intersect(choice.getstartDate(), choice.getendDate(), p1.getStart(),
+							if (Utils.getInstance().intersect(choice.getstartDate(), choice.getendDate(), p1.getStart(),
 									p1.getEnd())) {
 								if (!selectedChoices.contains(choice.getId())) {
 									selectedChoices.add(choice.getId());

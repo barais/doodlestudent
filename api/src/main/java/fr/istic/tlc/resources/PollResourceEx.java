@@ -1,6 +1,6 @@
 package fr.istic.tlc.resources;
 
-import static fr.istic.tlc.services.Utils.generateSlug;
+import fr.istic.tlc.services.Utils;
 
 import java.util.List;
 
@@ -110,7 +110,7 @@ public class PollResourceEx {
 	@Transactional
 	public ResponseEntity<Poll> createPoll(@Valid @RequestBody Poll poll) {
 		// On enregistre le poll dans la bdd
-		String padId = generateSlug(15);
+		String padId = Utils.getInstance().generateSlug(15);
 		if (this.usePad) {
 			if (client == null) {
 				client = new EPLiteClient(padUrl, apikey);
