@@ -31,7 +31,7 @@ public class Utils {
         return slug.toString();
     }
     
-	public oolean intersect(Date start1, Date end1, Date start2, Date end2) {
+	public boolean intersect(Date start1, Date end1, Date start2, Date end2) {
 		if (start1 == null || start2 == null ||end1 == null||end2 == null)
 			return false;
 		return end1.after(start2) && start1.before(end2);
