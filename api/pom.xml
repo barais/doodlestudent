@@ -8,15 +8,15 @@
 	<artifactId>tlcdemoApp</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<properties>
-		<surefire-plugin.version>2.22.1</surefire-plugin.version>
+		<surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
 		<maven.compiler.target>11</maven.compiler.target>
-		<quarkus.platform.version>1.10.5.Final</quarkus.platform.version>
+        <quarkus.platform.version>2.13.3.Final</quarkus.platform.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.parameters>true</maven.compiler.parameters>
-		<quarkus-plugin.version>1.10.5.Final</quarkus-plugin.version>
+        <quarkus-plugin.version>2.13.3.Final</quarkus-plugin.version>
 		<compiler-plugin.version>3.8.1</compiler-plugin.version>
 		<quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
 	</properties>
@@ -35,10 +35,6 @@
 		<dependency>
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-hibernate-orm</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.quarkus</groupId>
-			<artifactId>quarkus-flyway</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.quarkus</groupId>
@@ -192,10 +188,6 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${compiler-plugin.version}</version>
-			</plugin>
-			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${surefire-plugin.version}</version>
 				<configuration>
@@ -240,7 +232,7 @@
 			</build>
 			<properties>
 				<quarkus.package.type>native</quarkus.package.type>
-				<quarkus.native.additional-build-args>-H:ReflectionConfigurationFiles=reflection-config.json,-H:IncludeResourceBundles=sun.util.resources.TimeZoneNames</quarkus.native.additional-build-args>
+				<quarkus.native.additional-build-args>--initialize-at-run-time=org.apache.http.impl.auth.NTLMEngineImpl,-H:ReflectionConfigurationFiles=reflection-config.json,-H:IncludeResourceBundles=sun.util.resources.TimeZoneNames</quarkus.native.additional-build-args>
 			</properties>
 
 
