@@ -13,7 +13,7 @@ RUN git clone https://github.com/damienMS/doodlestudent.git
 ## Going to the working directory
 WORKDIR /doodlestudent/api
 
-RUN ls
+RUN git checkout dev
 
 
 ## EXPOSE on port 8080
