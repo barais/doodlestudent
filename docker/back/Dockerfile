@@ -8,7 +8,7 @@ RUN apt-get update &&\
     git
 
 ## Cloning the repository
-RUN git clone https://github.com/barais/doodlestudent.git
+RUN git clone https://github.com/damienMS/doodlestudent.git
 
 ## Going to the working directory
 WORKDIR /doodlestudent/api
