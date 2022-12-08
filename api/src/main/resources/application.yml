@@ -14,8 +14,8 @@ quarkus:
       url: jdbc:mysql://db:3306/tlc?useUnicode=true&serverTimezone=Europe/Paris
       driver: com.mysql.cj.jdbc.Driver
   flyway:
-    migrate-at-start: true
-    baseline-on-migrate: true
+    migrate-at-start: false
+    baseline-on-migrate: false
 #    database:
 #      generation: none
 #      globally-quoted-identifiers: true
