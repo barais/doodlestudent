@@ -1,3 +1,5 @@
+import { DayCellContent } from '@fullcalendar/core';
+
 export interface Poll {
  createdAt?: Date;
  description?: string;
@@ -54,4 +56,9 @@ export interface EventDTO{
 export interface EventDTOAndSelectedChoice {
   eventdtos?: EventDTO[];
   selectedChoices?: number[];
+}
+
+export interface WeatherInput {
+  firstDay : Date;
+  lastDay: Date;
 }

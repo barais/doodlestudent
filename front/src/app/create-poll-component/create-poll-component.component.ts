@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { PollService } from '../poll-service.service';
 import { FullCalendarComponent, CalendarOptions, EventInput } from '@fullcalendar/angular';
 import frLocale from '@fullcalendar/core/locales/fr';
-import { PollChoice, Poll, User } from '../model/model';
+import { PollChoice, Poll, User, WeatherInput } from '../model/model';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-create-poll-component',
@@ -12,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./create-poll-component.component.css'],
   providers: [MessageService, PollService, FullCalendarComponent]
 })
-export class CreatePollComponentComponent implements OnInit {
+export class CreatePollComponentComponent implements OnInit, AfterViewChecked{
   urlsondage = '';
   urlsondageadmin = '';
   urlsalon = '';
@@ -25,6 +26,7 @@ export class CreatePollComponentComponent implements OnInit {
 
   slugid: string;
   poll: Poll = {};
+  zipCode: number;
 
   events: EventInput[] = [];
   eventsfromics: EventInput[] = [];
@@ -36,6 +38,8 @@ export class CreatePollComponentComponent implements OnInit {
   loadics = false;
   ics: string;
 
+  private weatherInput: WeatherInput;
+ 
   @ViewChild('calendar') set content(content: FullCalendarComponent) {
     if (content) { // initially setter gets called with undefined
       this.calendarComponent = content;
@@ -68,7 +72,7 @@ export class CreatePollComponentComponent implements OnInit {
   submitted = false;
 
 
-  constructor(public messageService: MessageService, public pollService: PollService, private actRoute: ActivatedRoute) { }
+  constructor(public messageService: MessageService, public pollService: PollService, private actRoute: ActivatedRoute,private cdRef : ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.poll.pollChoices = [];
@@ -157,6 +161,9 @@ export class CreatePollComponentComponent implements OnInit {
       }
 
       },
+      datesSet:(info)=>{
+        this.weatherInput={firstDay:info.start,lastDay:info.end};
+      },
       validRange: {
         start: Date.now()
       }
@@ -185,9 +192,11 @@ export class CreatePollComponentComponent implements OnInit {
       }
 
     });
+    
 
-
-
+  }
+  ngAfterViewChecked(){
+    this.cdRef.detectChanges();
   }
 
   nextPage(): void {
