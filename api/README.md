@@ -8,7 +8,9 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 
 You can run your application in dev mode that enables live coding using:
 ```shell script
-docker-compose up --detach & ./mvnw compile quarkus:dev
+docker-compose up --detach 
+# Wait the correct start of the docker services and then
+./mvnw compile quarkus:dev
 ```
 
 To stop the application and its dependencies, type `ctrl+c` in the bash session and run `docker-compose down`.

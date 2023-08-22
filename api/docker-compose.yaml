@@ -2,19 +2,17 @@ version: "3.8"
 services:
   db:
     image: mysql
-    volumes:
-      - ./src/main/resources/db/migration/:/docker-entrypoint-initdb.d
-#    ports:
-#      - "3306:3306"
+    ports:
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=tlc
       - MYSQL_USER=tlc
       - MYSQL_PASSWORD=tlc
   etherpad:
-    image: etherpad/etherpad:1.8
-#    ports:
-#      - "9001:9001"
+    image: etherpad/etherpad:stable
+    ports:
+      - "9001:9001"
     volumes:
       - ./APIKEY.txt:/opt/etherpad-lite/APIKEY.txt
   mail:
@@ -22,24 +20,3 @@ services:
     restart: always
     ports:
       - "2525:25"
-  api:
-    container_name: api
-    image: doodleback
-    command: ["/work/application", "-Dquarkus.http.host=0.0.0.0", "-Dquarkus.datasource.username=tlc","-Dquarkus.datasource.password=tlc","-Dquarkus.datasource.jdbc.url=jdbc:mysql://db:3306/tlc?useUnicode=true&serverTimezone=Europe/Paris","-Ddoodle.internalPadUrl=http://etherpad:9001","-Ddoodle.externalPadUrl=http://pad.tlc.fr:90/"]
-    restart: always
-  front: 
-    container_name: front
-    image: doodlefront
-    ports:
-      - 90:80
-    volumes:
-      -  ./exampleconf/doodle.conf:/etc/nginx/conf.d/doodle.conf
-      -  ./exampleconf/pad.conf:/etc/nginx/conf.d/pad.conf
-      -  ./exampleconf/myadmin.conf:/etc/nginx/conf.d/myadmin.conf
-  myadmin:
-    image: phpmyadmin
-    container_name: myadmin
-    environment:
-      -  PMA_HOST=db
-
-  
