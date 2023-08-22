@@ -10,12 +10,15 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import javax.inject.Inject;
 import javax.mail.MessagingException;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.MediaType;
+
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -56,7 +59,7 @@ public class ICSResources {
 
 	@GET
 	@Path("polls/{slug}/{ics}")
-	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public EventDTOAndSelectedChoice parseCalendartoAppointments(@PathParam("slug") String slug,
 			@PathParam("ics") String ics)
 			throws IOException, ParserException, InterruptedException, ExecutionException, MessagingException {

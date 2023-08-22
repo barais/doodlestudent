@@ -3,7 +3,6 @@ package fr.istic.tlc.resources;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +23,7 @@ import fr.istic.tlc.dao.UserRepository;
 import fr.istic.tlc.domain.Choice;
 import fr.istic.tlc.domain.Poll;
 import fr.istic.tlc.domain.User;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")

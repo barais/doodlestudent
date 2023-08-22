@@ -4,8 +4,8 @@ import fr.istic.tlc.services.Utils;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-import javax.validation.Valid;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class PollResourceEx {
 	PollRepository pollRepository;
 
 	@ConfigProperty(name = "doodle.usepad")
-	boolean usePad = true;
+	Boolean usePad = true;
 	@ConfigProperty(name = "doodle.internalPadUrl", defaultValue="http://etherpad:9001/")
 	String padUrl = "";
 	@ConfigProperty(name = "doodle.externalPadUrl", defaultValue="http://etherpad.diverse-team.fr/")

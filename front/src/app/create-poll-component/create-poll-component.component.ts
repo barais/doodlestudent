@@ -1,10 +1,21 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { PollService } from '../poll-service.service';
-import { FullCalendarComponent, CalendarOptions, EventInput } from '@fullcalendar/angular';
+import { FullCalendarComponent } from '@fullcalendar/angular';
 import frLocale from '@fullcalendar/core/locales/fr';
 import { PollChoice, Poll, User } from '../model/model';
 import { ActivatedRoute } from '@angular/router';
+import { CalendarOptions, EventInput } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import timeGridPlugin from '@fullcalendar/timegrid';
+
+/*FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin,
+  timeGridPlugin
+]);*/
+
 
 @Component({
   selector: 'app-create-poll-component',
@@ -96,6 +107,8 @@ export class CreatePollComponentComponent implements OnInit {
 
     this.options = {
       initialView: 'timeGridWeek',
+      plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
+
       // dateClick: this.handleDateClick.bind(this), // bind is important!
       select: (selectionInfo) => {
         console.log(selectionInfo);

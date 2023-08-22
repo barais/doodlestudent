@@ -2,7 +2,7 @@ package fr.istic.tlc.dao;
 
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import fr.istic.tlc.domain.Poll;
 import fr.istic.tlc.domain.User;

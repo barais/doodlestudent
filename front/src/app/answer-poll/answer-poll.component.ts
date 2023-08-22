@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { stringify } from 'querystring';
 import { PollService } from '../poll-service.service';
 import { Poll, ChoiceUser, PollCommentElement, User, PollChoice } from '../model/model';
 import { CalendarOptions, EventInput } from '@fullcalendar/core';
@@ -9,6 +8,9 @@ import frLocale from '@fullcalendar/core/locales/fr';
 import { MessageService } from 'primeng/api';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalPollClosComponent } from '../modal-poll-clos/modal-poll-clos.component';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import timeGridPlugin from '@fullcalendar/timegrid';
 
 @Component({
   selector: 'app-answer-poll',
@@ -111,6 +113,8 @@ export class AnswerPollComponent implements OnInit {
 
     this.options = {
       initialView: 'timeGridWeek',
+      plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
+
       // dateClick: this.handleDateClick.bind(this), // bind is important!
       /*eventDragStart: (timeSheetEntry, jsEvent, ui, activeView) => {
         this.eventDragStart(

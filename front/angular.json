@@ -24,9 +24,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/@fullcalendar/common/main.min.css",
-              "node_modules/@fullcalendar/daygrid/main.min.css",
-              "node_modules/@fullcalendar/timegrid/main.min.css",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css",
               "node_modules/primeicons/primeicons.css",
