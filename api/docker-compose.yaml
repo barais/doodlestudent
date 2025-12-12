@@ -10,11 +10,13 @@ services:
       - MYSQL_USER=tlc
       - MYSQL_PASSWORD=tlc
   etherpad:
-    image: etherpad/etherpad
+    image: etherpad/etherpad:2.2.2
     ports:
       - "9001:9001"
+    environment:
+      AUTHENTICATION_METHOD: "apikey"
     volumes:
-      - ./APIKEY.txt:/opt/etherpad-lite/APIKEY.txt
+      - ./APIKEY.txt:/opt/etherpad-lite/APIKEY.txt:ro
   mail:
     image: bytemark/smtp
     restart: always
