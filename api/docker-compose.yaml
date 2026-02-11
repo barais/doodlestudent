@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   db:
     image: mysql
@@ -22,3 +21,18 @@ services:
     restart: always
     ports:
       - "2525:25"
+
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - QUARKUS_DATASOURCE_JDBC_URL=jdbc:mysql://db:3306/tlc
+      - QUARKUS_DATASOURCE_USERNAME=tlc
+      - QUARKUS_DATASOURCE_PASSWORD=tlc
+      - QUARKUS_DATASOURCE_DEVSERVICES_ENABLED=false
+    depends_on:
+      - db
+      - etherpad
+      - mail
+    restart: on-failure
